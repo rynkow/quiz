@@ -28,4 +28,12 @@ public class QuizService {
     public List<Quiz> findByAuthorId(String authorId) {
         return quizRepository.findByAuthorId(authorId);
     }
+
+    public void saveOrUpdate(Quiz quiz) {
+        quizRepository.save(quiz);
+    }
+
+    public void deleteById(String id) {
+        quizRepository.deleteById(id);
+    }
 }
