@@ -59,8 +59,8 @@ public class Quiz {
         return isPublic;
     }
 
-    public void setPublic(Boolean aPublic) {
-        isPublic = aPublic;
+    public void setPublic(Boolean isPublic) {
+        this.isPublic = isPublic;
     }
 
     public List<Question> getQuestions() {
@@ -71,11 +71,56 @@ public class Quiz {
         this.questions = questions;
     }
 
-    public void addQuestion(Question question){
+    public void addQuestion(Question question) {
         this.questions.add(question);
     }
 
-    public void removeQuestion(Question question){
+    public void removeQuestion(Question question) {
         this.questions.remove(question);
+    }
+
+    public static class Builder {
+        private String id;
+        private String title;
+        private String description;
+        private String authorId;
+        private Boolean isPublic;
+        private List<Question> questions;
+
+        public Builder setId(String id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setAuthorId(String authorId) {
+            this.authorId = authorId;
+            return this;
+        }
+
+        public Builder setPublic(Boolean isPublic) {
+            this.isPublic = isPublic;
+            return this;
+        }
+
+        public Builder setQuestions(List<Question> questions) {
+            this.questions = questions;
+            return this;
+        }
+
+        public Quiz build() {
+            Quiz quiz = new Quiz(title, description, authorId, isPublic, questions);
+            quiz.setId(id);
+            return quiz;
+        }
     }
 }
