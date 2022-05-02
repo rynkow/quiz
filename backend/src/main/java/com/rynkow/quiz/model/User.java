@@ -9,10 +9,15 @@ public class User {
     private String id;
     private String name;
     private String password;
+    private AuthRole role;
+    private Boolean deactivated;
+
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+        this.role = AuthRole.USER;
+        this.deactivated = false;
     }
 
     public String getId() {
@@ -37,5 +42,25 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public AuthRole getRole() {
+        return role;
+    }
+
+    public void setRole(AuthRole role) {
+        this.role = role;
+    }
+
+    public Boolean getDeactivated() {
+        return deactivated;
+    }
+
+    public void deactivate() {
+        this.deactivated = true;
+    }
+
+    public void activate() {
+        this.deactivated = false;
     }
 }

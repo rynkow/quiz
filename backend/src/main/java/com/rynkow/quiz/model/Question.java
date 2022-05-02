@@ -1,16 +1,28 @@
 package com.rynkow.quiz.model;
 
+import org.bson.types.ObjectId;
+
 import java.util.Map;
 
 public class Question {
+    private String id;
     private String question;
     private Map<String, Boolean> answers;
     private Boolean isMultipleChoice;
 
     public Question(String question, Map<String, Boolean> answers, Boolean isMultipleChoice) {
+        this.id = new ObjectId().toString();
         this.question = question;
         this.answers = answers;
         this.isMultipleChoice = isMultipleChoice;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getQuestion() {
