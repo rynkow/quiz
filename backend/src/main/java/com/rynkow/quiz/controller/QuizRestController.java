@@ -57,7 +57,7 @@ public class QuizRestController {
     private QuizDTO convertToDTO(Quiz quiz) {
         return new QuizDTO.Builder()
                 .setId(quiz.getId())
-                .setAuthor(userService.findById(quiz.getAuthorId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "author not found")).getName())
+                .setAuthor(userService.getName(quiz.getAuthorId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "author not found")))
                 .setDescription(quiz.getDescription())
                 .setPublic(quiz.getPublic())
                 .setQuestions(quiz.getQuestions())
@@ -68,7 +68,7 @@ public class QuizRestController {
     private Quiz convertFromDTO(QuizDTO quizDTO) {
         return new Quiz.Builder()
                 .setId(quizDTO.getId())
-                .setAuthorId(userService.findByName(quizDTO.getAuthor()).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "author not found")).getId())
+                .setAuthorId(userService.getId(quizDTO.getAuthor()).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "author not found")))
                 .setDescription(quizDTO.getDescription())
                 .setPublic(quizDTO.getPublic())
                 .setQuestions(quizDTO.getQuestions())

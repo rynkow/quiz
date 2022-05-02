@@ -23,4 +23,13 @@ public class UserService {
     public Optional<User> findByName(String name) {
         return userRepository.findByName(name);
     }
+
+    public Optional<String> getName(String id) {
+        return userRepository.findById(id).map(User::getName);
+    }
+
+    public Optional<String> getId(String name) {
+        return userRepository.findByName(name).map(User::getId);
+    }
+
 }
