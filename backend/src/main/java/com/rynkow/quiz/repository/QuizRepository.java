@@ -1,6 +1,6 @@
 package com.rynkow.quiz.repository;
 
-import com.rynkow.quiz.model.Quiz;
+import com.rynkow.quiz.model.quiz.Quiz;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

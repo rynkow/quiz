@@ -1,4 +1,4 @@
-package com.rynkow.quiz.model;
+package com.rynkow.quiz.model.user;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

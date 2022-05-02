@@ -1,6 +1,6 @@
 package com.rynkow.quiz.dto;
 
-import com.rynkow.quiz.model.Question;
+import com.rynkow.quiz.model.question.Question;
 
 import java.util.List;
 

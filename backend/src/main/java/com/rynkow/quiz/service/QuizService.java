@@ -1,6 +1,6 @@
 package com.rynkow.quiz.service;
 
-import com.rynkow.quiz.model.Quiz;
+import com.rynkow.quiz.model.quiz.Quiz;
 import com.rynkow.quiz.repository.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

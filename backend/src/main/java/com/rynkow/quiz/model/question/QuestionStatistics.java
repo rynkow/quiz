@@ -1,4 +1,4 @@
-package com.rynkow.quiz.model;
+package com.rynkow.quiz.model.question;
 
 public class QuestionStatistics {
     private int correctAnswers;

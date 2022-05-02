@@ -1,7 +1,7 @@
 package com.rynkow.quiz.controller;
 
 import com.rynkow.quiz.dto.QuizDTO;
-import com.rynkow.quiz.model.Quiz;
+import com.rynkow.quiz.model.quiz.Quiz;
 import com.rynkow.quiz.service.QuizService;
 import com.rynkow.quiz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
-package com.rynkow.quiz.model;
+package com.rynkow.quiz.model.quiz;
 
+import com.rynkow.quiz.model.question.Question;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
