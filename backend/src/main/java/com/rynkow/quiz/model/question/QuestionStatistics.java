@@ -1,45 +1,45 @@
 package com.rynkow.quiz.model.question;
 
 public class QuestionStatistics {
-    private int correctAnswers;
-    private int wrongAnswers;
-    private QuestionState questionState;
+    private Integer correctAnswers;
+    private Integer wrongAnswers;
+    private Boolean needsReview;
 
     public QuestionStatistics() {
         this.correctAnswers = 0;
         this.wrongAnswers = 0;
-        this.questionState = QuestionState.NEEDS_REVIEW;
+        this.needsReview = true;
     }
 
-    public int getCorrectAnswers() {
+    public Integer getCorrectAnswers() {
         return correctAnswers;
     }
 
-    public void setCorrectAnswers(int correctAnswers) {
+    public void setCorrectAnswers(Integer correctAnswers) {
         this.correctAnswers = correctAnswers;
     }
 
-    public int getWrongAnswers() {
+    public Integer getWrongAnswers() {
         return wrongAnswers;
     }
 
-    public void setWrongAnswers(int wrongAnswers) {
+    public void setWrongAnswers(Integer wrongAnswers) {
         this.wrongAnswers = wrongAnswers;
     }
 
-    public QuestionState getQuestionState() {
-        return questionState;
+    public Boolean getNeedsReview() {
+        return needsReview;
     }
 
-    public void setQuestionState(QuestionState questionState) {
-        this.questionState = questionState;
+    public void setNeedsReview(Boolean needsReview) {
+        this.needsReview = needsReview;
     }
 
-    public void newCorrectAnswer() {
-        this.correctAnswers += 1;
+    public void newCorrectAnswers(Integer correctAnswers) {
+        this.correctAnswers += correctAnswers;
     }
 
-    public void newWrongAnswer() {
-        this.wrongAnswers += 1;
+    public void newWrongAnswers(Integer wrongAnswers) {
+        this.wrongAnswers += wrongAnswers;
     }
 }
