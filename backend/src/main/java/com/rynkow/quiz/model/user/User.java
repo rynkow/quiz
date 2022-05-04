@@ -10,14 +10,14 @@ public class User {
     private String name;
     private String password;
     private AuthRole role;
-    private Boolean deactivated;
+    private Boolean enabled;
 
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
         this.role = AuthRole.USER;
-        this.deactivated = false;
+        this.enabled = true;
     }
 
     public String getId() {
@@ -52,15 +52,15 @@ public class User {
         this.role = role;
     }
 
-    public Boolean getDeactivated() {
-        return deactivated;
+    public Boolean isEnabled() {
+        return enabled;
     }
 
-    public void deactivate() {
-        this.deactivated = true;
+    public void enable() {
+        this.enabled = true;
     }
 
-    public void activate() {
-        this.deactivated = false;
+    public void disable() {
+        this.enabled = false;
     }
 }
