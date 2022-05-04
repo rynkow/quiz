@@ -1,18 +1,16 @@
 package com.rynkow.quiz.dto;
 
-import com.rynkow.quiz.model.question.Question;
-
 import java.util.List;
 
-public class QuizDTO {
+public class QuizDTO implements Cloneable {
     private String id;
     private String title;
     private String description;
     private String author;
     private Boolean isPublic;
-    private List<Question> questions;
+    private List<QuestionDTO> questions;
 
-    public QuizDTO(String id, String title, String description, String author, Boolean isPublic, List<Question> questions) {
+    public QuizDTO(String id, String title, String description, String author, Boolean isPublic, List<QuestionDTO> questions) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -61,12 +59,23 @@ public class QuizDTO {
         isPublic = aPublic;
     }
 
-    public List<Question> getQuestions() {
+    public List<QuestionDTO> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<QuestionDTO> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public QuizDTO clone() {
+        try {
+            QuizDTO clone = (QuizDTO) super.clone();
+            clone.questions = questions.stream().map(QuestionDTO::clone).toList();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 
     public static class Builder {
@@ -75,7 +84,7 @@ public class QuizDTO {
         private String description;
         private String author;
         private Boolean isPublic;
-        private List<Question> questions;
+        private List<QuestionDTO> questions;
 
         public Builder() {
         }
@@ -105,7 +114,7 @@ public class QuizDTO {
             return this;
         }
 
-        public Builder setQuestions(List<Question> questions) {
+        public Builder setQuestions(List<QuestionDTO> questions) {
             this.questions = questions;
             return this;
         }
@@ -114,4 +123,5 @@ public class QuizDTO {
             return new QuizDTO(id, title, description, author, isPublic, questions);
         }
     }
+
 }

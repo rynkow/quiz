@@ -120,7 +120,8 @@ public class Quiz {
 
         public Quiz build() {
             Quiz quiz = new Quiz(title, description, authorId, isPublic, questions);
-            quiz.setId(id);
+            if (id != null)
+                quiz.setId(id);
             return quiz;
         }
     }
