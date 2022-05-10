@@ -1,9 +1,10 @@
+import React from "react";
 import {Container} from "react-bootstrap";
 
-export function QuizList(){
+export function SignupForm(){
     return(
         <Container>
-            List of quizzes
+            SignUp Form
         </Container>
     );
 }

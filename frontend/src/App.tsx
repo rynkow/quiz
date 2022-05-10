@@ -1,12 +1,13 @@
 import './App.css';
 import {Container, Nav, Navbar} from "react-bootstrap";
-import { LinkContainer } from 'react-router-bootstrap';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Home} from "./Home";
-import {QuizList} from "./QuizList";
-import {QuizCreationForm} from "./QuizCreationForm";
-import {LoginForm} from "./LoginForm";
-import {SignupForm} from "./SignupForm";
+import {Home} from "./page/Home";
+import {QuizList} from "./page/QuizList";
+import {QuizCreationForm} from "./page/QuizCreationForm";
+import {LoginForm} from "./page/LoginForm";
+import {SignupForm} from "./page/SignupForm";
+import React from 'react';
+import {LinkContainer} from "react-router-bootstrap";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
               <Navbar.Brand >QuizApp</Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Collapse id="responsive-navbar-nav" role="navigation">
               <Nav className="me-auto">
                 <LinkContainer to="/browse">
                   <Nav.Link>Browse</Nav.Link>
