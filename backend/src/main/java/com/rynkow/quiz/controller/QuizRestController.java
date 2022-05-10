@@ -19,6 +19,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequestMapping("/quiz")
 public class QuizRestController {
     private QuizService quizService;
