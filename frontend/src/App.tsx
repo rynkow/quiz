@@ -1,5 +1,4 @@
 import './App.css';
-import {Container, Nav, Navbar} from "react-bootstrap";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./page/Home";
 import {QuizList} from "./page/QuizList";
@@ -7,38 +6,13 @@ import {QuizCreationForm} from "./page/QuizCreationForm";
 import {LoginForm} from "./page/LoginForm";
 import {SignupForm} from "./page/SignupForm";
 import React from 'react';
-import {LinkContainer} from "react-router-bootstrap";
+import {Container} from "react-bootstrap";
+import QuizAppNavbar from "./component/QuizAppNavbar";
 
 function App() {
   return (
       <BrowserRouter>
-
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Container>
-            <LinkContainer to="/">
-              <Navbar.Brand >QuizApp</Navbar.Brand>
-            </LinkContainer>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav" role="navigation">
-              <Nav className="me-auto">
-                <LinkContainer to="/browse">
-                  <Nav.Link>Browse</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/create">
-                  <Nav.Link>Create</Nav.Link>
-                </LinkContainer>
-              </Nav>
-              <Nav>
-                <LinkContainer to="/login">
-                  <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/signup">
-                  <Nav.Link>SignUp</Nav.Link>
-                </LinkContainer>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
+        <QuizAppNavbar/>
 
         <Container>
           <Routes>
