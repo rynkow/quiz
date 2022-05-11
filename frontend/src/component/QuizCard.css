@@ -6,3 +6,6 @@
 .card-subtitle{
     color: darkgray;
 }
+.bg-danger{
+    --bs-bg-opacity: 0.5;
+}
