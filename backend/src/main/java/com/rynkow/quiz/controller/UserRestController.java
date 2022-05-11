@@ -30,8 +30,8 @@ public class UserRestController {
                 authentication.getName(), null, userRole);
     }
 
-    @PostMapping("/singup")
-    public ResponseEntity<?> singup(@RequestBody UserDTO userDTO) {
+    @PostMapping("/signup")
+    public ResponseEntity<?> signup(@RequestBody UserDTO userDTO) {
         if (userDTO.getName() == null || userDTO.getPassword() == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid user data");
 
@@ -39,7 +39,7 @@ public class UserRestController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "username taken");
 
         userRepository.save(new User(userDTO.getName(), passwordEncoder.encode(userDTO.getPassword())));
-        return new ResponseEntity<>("singup completed", HttpStatus.OK);
+        return new ResponseEntity<>("signup completed", HttpStatus.OK);
     }
 
     @Autowired
