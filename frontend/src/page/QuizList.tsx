@@ -2,6 +2,7 @@ import {Container} from "react-bootstrap";
 import {Key, useEffect, useState} from "react";
 import React from "react";
 import Quiz from "../interface/quiz.interface";
+import QuizCard from "../component/QuizCard";
 
 export function QuizList(){
 
@@ -15,18 +16,18 @@ export function QuizList(){
             })
     }, []);
 
-    const names = quizzes.map((quiz) => {
+    const quizCards = quizzes.map((quiz) => {
         console.log(quiz.title);
 
         return(
-            <div key={quiz.id as Key} ><p>{quiz.title}</p></div>
+            <QuizCard quiz={quiz} key={quiz.id as Key}/>
         );
     });
 
     return(
         <Container>
             <div>
-                {names}
+                {quizCards}
             </div>
         </Container>
     );
