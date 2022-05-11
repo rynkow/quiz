@@ -4,7 +4,7 @@ import User from "../interface/user.interface";
 import UserForm from "../component/UserForm";
 import "./Login.css"
 
-export function Login(props: {setUser: (user: User) => void}){
+export function Login(props: {onLogin: (user: User) => void}){
     const [message, setMessage] = useState("");
 
     const onSubmit = async (user: User) => {
@@ -23,7 +23,7 @@ export function Login(props: {setUser: (user: User) => void}){
        }
        let userData: User = await request.json() as User;
        userData.password = user.password;
-       props.setUser(userData);
+       props.onLogin(userData);
        setMessage("Login successful");
     }
 

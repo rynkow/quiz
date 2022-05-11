@@ -21,7 +21,7 @@ function App() {
               <Routes>
                 <Route path="/browse" element={<QuizList/>}/>
                 <Route path="/create" element={<QuizCreationForm/>}/>
-                <Route path="/login" element={<Login setUser={(user: User) => setUser(user)}/>}/>
+                <Route path="/login" element={<Login onLogin={(user: User) => setUser(user)}/>}/>
                 <Route path="/signup" element={<Signup onSignup={(user: User) => setUser(user)}/>}/>
                 <Route path="/" element={<Home/>}/>
               </Routes>
