@@ -24,7 +24,7 @@ export function QuizList(props: {user: User | undefined}){
             .then((data) => {
                 setQuizzes(data);
             })
-    }, []);
+    }, [props.user]);
 
     const quizCards = quizzes.map((quiz) => {
         return(
