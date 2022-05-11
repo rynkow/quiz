@@ -4,9 +4,8 @@ import React from "react";
 import {LinkContainer} from "react-router-bootstrap";
 import "./QuizCard.css";
 
-const QuizCard = (prop: { quiz:Quiz }) => {
-    let completionRate = prop.quiz.questions.filter((question) => !question.needsReview).length / prop.quiz.questions.length * 100;
-
+const QuizCard = (props: { quiz:Quiz }) => {
+    let completionRate = props.quiz.questions.filter((question) => !question.needsReview).length / props.quiz.questions.length * 100;
     return (
         <Card
             bg="light"
@@ -14,24 +13,24 @@ const QuizCard = (prop: { quiz:Quiz }) => {
             className="mb-2"
         >
             <Card.Body>
-                <Card.Title> {prop.quiz.title} </Card.Title>
-                <Card.Subtitle> {`by ${prop.quiz.author}`} </Card.Subtitle>
+                <Card.Title> {props.quiz.title} </Card.Title>
+                <Card.Subtitle> {`by ${props.quiz.author}`} </Card.Subtitle>
                 <Card.Text>
-                    {prop.quiz.description}
+                    {props.quiz.description}
                 </Card.Text>
-                <LinkContainer to={`/details/${prop.quiz.id}`}>
+                <LinkContainer to={`/details/${props.quiz.id}`}>
                     <Button variant="dark">Details</Button>
                 </LinkContainer>
                 {' '}
-                <LinkContainer to={`/solve/${prop.quiz.id}`}>
+                <LinkContainer to={`/solve/${props.quiz.id}`}>
                     <Button variant="dark">Solve</Button>
                 </LinkContainer>
                 {' '}
-                <LinkContainer to={`/edit/${prop.quiz.id}`}>
+                <LinkContainer to={`/edit/${props.quiz.id}`}>
                     <Button variant="dark">Edit</Button>
                 </LinkContainer>
             </Card.Body>
-            <Card.Footer hidden={completionRate === 0}>
+            <Card.Footer hidden={completionRate === 0 || props.quiz.questions.length === 0}>
                 <label>Completion Rate{' '}</label>
                 <ProgressBar>
                     <ProgressBar variant="success" now={completionRate} key={1} />
