@@ -4,7 +4,7 @@ import {Home} from "./page/Home";
 import {QuizList} from "./page/QuizList";
 import {QuizCreationForm} from "./page/QuizCreationForm";
 import {Login} from "./page/Login";
-import {SignupForm} from "./page/SignupForm";
+import {Signup} from "./page/Signup";
 import React, {useState} from 'react';
 import {Container} from "react-bootstrap";
 import QuizAppNavbar from "./component/QuizAppNavbar";
@@ -15,17 +15,17 @@ function App() {
     const navigate = useNavigate();
     return (
         <div>
-        <QuizAppNavbar loggedIn={user !== undefined} onLogout={() => {setUser(undefined); navigate("/");}} />
+            <QuizAppNavbar loggedIn={user !== undefined} onLogout={() => {setUser(undefined); navigate("/");}} />
 
-        <Container>
-          <Routes>
-            <Route path="/browse" element={<QuizList/>}/>
-            <Route path="/create" element={<QuizCreationForm/>}/>
-            <Route path="/login" element={<Login setUser={(user: User) => setUser(user)}/>}/>
-            <Route path="/signup" element={<SignupForm/>}/>
-            <Route path="/" element={<Home/>}/>
-          </Routes>
-        </Container>
+            <Container>
+              <Routes>
+                <Route path="/browse" element={<QuizList/>}/>
+                <Route path="/create" element={<QuizCreationForm/>}/>
+                <Route path="/login" element={<Login setUser={(user: User) => setUser(user)}/>}/>
+                <Route path="/signup" element={<Signup onSignup={(user: User) => setUser(user)}/>}/>
+                <Route path="/" element={<Home/>}/>
+              </Routes>
+            </Container>
         </div>
     );
 }
