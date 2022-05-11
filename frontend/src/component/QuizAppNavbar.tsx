@@ -4,7 +4,6 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 import './QuizAppNavbar.css'
 
 const QuizAppNavbar = (props: {loggedIn: boolean, onLogout: ()=>void}) => {
-    console.log(props.loggedIn);
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
