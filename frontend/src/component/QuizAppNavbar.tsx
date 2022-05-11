@@ -3,7 +3,8 @@ import React from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import './QuizAppNavbar.css'
 
-const QuizAppNavbar = () => {
+const QuizAppNavbar = (props: {loggedIn: boolean, onLogout: ()=>void}) => {
+    console.log(props.loggedIn);
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -22,11 +23,12 @@ const QuizAppNavbar = () => {
                     </Nav>
                     <Nav activeKey="">
                         <LinkContainer to="/login">
-                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav.Link hidden={props.loggedIn}>Login</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/signup">
-                            <Nav.Link>SignUp</Nav.Link>
+                        <LinkContainer to="/signup" >
+                            <Nav.Link hidden={props.loggedIn}>SignUp</Nav.Link>
                         </LinkContainer>
+                        <Nav.Link onClick={props.onLogout} hidden={!props.loggedIn}>Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

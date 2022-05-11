@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes, useNavigate} from "react-router-dom";
 import {Home} from "./page/Home";
 import {QuizList} from "./page/QuizList";
 import {QuizCreationForm} from "./page/QuizCreationForm";
@@ -12,10 +12,10 @@ import User from "./interface/user.interface";
 
 function App() {
     const [user, setUser] = useState<User>();
-
+    const navigate = useNavigate();
     return (
-      <BrowserRouter>
-        <QuizAppNavbar/>
+        <div>
+        <QuizAppNavbar loggedIn={user !== undefined} onLogout={() => {setUser(undefined); navigate("/");}} />
 
         <Container>
           <Routes>
@@ -26,8 +26,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
           </Routes>
         </Container>
-
-      </BrowserRouter>
+        </div>
     );
 }
 
