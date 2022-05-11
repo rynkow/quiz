@@ -1,7 +1,7 @@
 interface User{
-    name: String,
-    password: String,
-    role: "USER" | "ADMIN",
+    name: string,
+    password?: string,
+    role?: "USER" | "ADMIN",
 }
 
 export default User;

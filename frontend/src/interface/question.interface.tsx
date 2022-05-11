@@ -1,11 +1,11 @@
 interface Question {
-    id: String,
-    question: String,
-    answers: Map<String, Boolean>,
-    isMultipleChoice: Boolean,
-    correctAnswers: Number,
-    wrongAnswers: Number,
-    needsReview: Boolean,
+    id: string,
+    question: string,
+    answers: Map<string, boolean>,
+    isMultipleChoice: boolean,
+    correctAnswers: number,
+    wrongAnswers: number,
+    needsReview: boolean,
 }
 
 export default Question;

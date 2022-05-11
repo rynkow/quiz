@@ -1,11 +1,11 @@
 import Question from "./question.interface";
 
 interface Quiz {
-    id: String,
-    title: String,
-    description: String,
-    author: String,
-    isPublic: Boolean,
+    id: string,
+    title: string,
+    description: string,
+    author: string,
+    isPublic: boolean,
     questions: Array<Question>
 }
 
