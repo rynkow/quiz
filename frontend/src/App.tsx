@@ -11,6 +11,7 @@ import User from "./interface/user.interface";
 import QuizDetails from "./page/QuizDetails";
 import Modify from "./page/Modify";
 import Create from "./page/Create";
+import SolveQuiz from "./page/SolveQuiz";
 
 function App() {
     const [user, setUser] = useState<User>();
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/signup" element={<Signup onSignup={(user: User) => setUser(user)}/>}/>
                     <Route path="/details/:quizId" element={<QuizDetails user={user as User}/>}/>
                     <Route path="/edit/:quizId" element={<Modify user={user as User}/>}/>
+                    <Route path="/solve/:quizId" element={<SolveQuiz user={user as User}/>}/>
                     <Route path="/" element={<Home/>}/>
                 </Routes>
             </Container>

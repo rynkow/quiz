@@ -29,7 +29,6 @@ class FetchService {
         const data = await response.json();
 
         for (let question of data.questions) {
-            console.log(question.answers);
             question.answers = new Map(Object.entries(question.answers));
         }
 
@@ -77,6 +76,35 @@ class FetchService {
         };
 
         const response = await fetch(`http://localhost:8080/quiz/create`, requestOptions);
+        return response.ok;
+    }
+
+
+    public static updateQuizStats = async (quizId: string, questionId: string, newCorrectAnswers: number, newWrongAnswers: number, needsReview: boolean, authHeader: string) => {
+        let requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": authHeader,
+                'credentials': 'same-origin'
+            },
+        };
+
+        let urlParams: any = {};
+        if (newWrongAnswers !== 0) {
+            urlParams["wrong"] = newWrongAnswers;
+        }
+        if (newCorrectAnswers !== 0) {
+            urlParams["correct"] = newCorrectAnswers;
+        }
+        urlParams["needsReview"] = needsReview;
+
+        const url = `http://localhost:8080/quiz/${quizId}/${questionId}/updatestats?`;
+
+        console.log(url + new URLSearchParams(urlParams));
+
+        const response = await fetch(url + new URLSearchParams(urlParams), requestOptions);
+
         return response.ok;
     }
 
