@@ -1,7 +1,7 @@
 import Question from "./question.interface";
 
 interface Quiz {
-    id: string,
+    id: string | null,
     title: string,
     description: string,
     author: string,

@@ -20,7 +20,7 @@ function App() {
             <Container>
               <Routes>
                 <Route path="/browse" element={<QuizList user={user}/>}/>
-                <Route path="/create" element={<QuizCreationForm/>}/>
+                <Route path="/create" element={<QuizCreationForm user={user as User}/>}/>
                 <Route path="/login" element={<Login onLogin={(user: User) => setUser(user)}/>}/>
                 <Route path="/signup" element={<Signup onSignup={(user: User) => setUser(user)}/>}/>
                 <Route path="/" element={<Home/>}/>

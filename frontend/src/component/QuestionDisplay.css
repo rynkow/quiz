@@ -1,0 +1,13 @@
+.answer-stack>*{
+    margin: auto 3px;
+}
+
+.answer-stack>input{
+    border: 0;
+    border-bottom: dimgrey 1px solid;
+}
+
+.answer-stack>{
+    border: 0;
+    border-bottom: dimgrey 1px solid;
+}
