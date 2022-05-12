@@ -17,7 +17,7 @@ const QuizAppNavbar = (props: {loggedIn: boolean, onLogout: ()=>void}) => {
                             <Nav.Link>Browse</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/create">
-                            <Nav.Link>Create</Nav.Link>
+                            <Nav.Link disabled={!props.loggedIn}>Create</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     <Nav activeKey="">
