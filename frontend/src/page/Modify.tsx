@@ -20,7 +20,6 @@ const Modify = (props: { user: User }) => {
         : `Basic ${window.btoa(props.user.name + ':' + props.user.password)}`;
 
     const save = (quiz: Quiz) => {
-        console.log("Modified", quiz)
         FetchService.updateQuiz(quiz, authHeater).finally(() => navigate(-1));
     }
 
@@ -36,7 +35,7 @@ const Modify = (props: { user: User }) => {
     return (
         (quiz !== undefined)
             ? <QuizForm user={props.user} quiz={quiz} onSave={(q) => save(q)}></QuizForm>
-            : <h1>Not Found</h1>
+            : <div></div>
     );
 }
 
