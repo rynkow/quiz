@@ -4,7 +4,7 @@ import User from "../interface/user.interface";
 import {useNavigate, useParams} from "react-router-dom";
 import QuestionDisplay from "../component/QuestionDisplay";
 import FetchService from "../utils/fetchService";
-import {Button, Container, Stack} from "react-bootstrap";
+import {Button, Card, Container, ProgressBar, Stack} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap";
 import "./QuizDetails.css"
 
@@ -42,8 +42,28 @@ const QuizDetails = (props: {user: User}) => {
     }, []);
 
     const QuestionCards = (quiz !== undefined) ? quiz.questions.map((question) => {
-        return(
-                <QuestionDisplay key={question.id} question={question}/>
+        const totalAnswers = question.correctAnswers + question.wrongAnswers;
+        return (
+
+            <QuestionDisplay key={question.id} question={question}>
+                <div hidden={props.user === undefined || totalAnswers === 0}>
+                    <p style={{margin: '7px auto 0 0'}}>Total answer count:</p>
+                    <ProgressBar>
+                        <ProgressBar variant="success"
+                                     now={(question.correctAnswers / (totalAnswers === 0 ? 1 : totalAnswers) * 100)}
+                                     key={1} label={`Correct: ${question.correctAnswers}`}/>
+                        <ProgressBar variant="danger"
+                                     now={question.wrongAnswers / (totalAnswers === 0 ? 1 : totalAnswers) * 100}
+                                     key={2} label={`Wrong: ${question.wrongAnswers}`}/>
+                    </ProgressBar>
+                    <p style={{margin: '7px auto 0 0'}}>Question State:</p>
+                    <Card.Text className={question.needsReview ? "state-needs-review" : "state-memorised"}>
+                        {question.needsReview ? "Needs Review" : "Memorised"}
+                    </Card.Text>
+
+                </div>
+
+            </QuestionDisplay>
         );
     }) : undefined;
 
@@ -56,7 +76,8 @@ const QuizDetails = (props: {user: User}) => {
                     <Button variant="dark">Solve</Button>
                 </LinkContainer>
                 <LinkContainer to={`/edit/${quiz.id}`} >
-                    <Button variant="dark" hidden={(props.user === undefined) || props.user.name !== quiz.author}>Edit</Button>
+                    <Button variant="dark"
+                            hidden={(props.user === undefined) || props.user.name !== quiz.author}>Edit</Button>
                 </LinkContainer>
                 <Button
                     variant="danger"
@@ -66,6 +87,19 @@ const QuizDetails = (props: {user: User}) => {
                     Delete
                 </Button>
             </Stack>
+            <div hidden={props.user === undefined}>
+                <h3>Quiz progress:<br/></h3>
+                <ProgressBar style={{maxWidth: '512px'}}>
+                    <ProgressBar variant="success"
+                                 now={quiz.questions.filter(q => !q.needsReview).length / (quiz.questions.length) * 100}
+                                 key={1}
+                                 label={`Memorised: ${quiz.questions.filter(q => !q.needsReview).length}`}/>
+                    <ProgressBar variant="danger"
+                                 now={quiz.questions.filter(q => q.needsReview).length / (quiz.questions.length) * 100}
+                                 key={2}
+                                 label={`Needs Review: ${quiz.questions.filter(q => q.needsReview).length}`}/>
+                </ProgressBar>
+            </div>
             <h3>Description:<br/></h3>
             <p className="description">{quiz.description}</p>
             <h3>Questions:<br/></h3>
