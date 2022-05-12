@@ -31,6 +31,8 @@ export function QuizForm(props: { user: User, quiz: Quiz, onSave: (quiz: Quiz) =
             }
         }
 
+        console.log("TOSAVE", quiz);
+
         props.onSave(quiz);
     }
 
@@ -122,10 +124,10 @@ export function QuizForm(props: { user: User, quiz: Quiz, onSave: (quiz: Quiz) =
                 <Form.Group>
                     <Form.Check
                         checked={isPrivate}
-                        onChange={() => setPrivate(!isPrivate)}
+                        onChange={(e) => setPrivate(e.target.checked)}
                         type="switch"
-                        id="custom-switch"
-                        label="Create as Private"
+                        id="private-switch"
+                        label="Private"
                     />
                 </Form.Group>
 

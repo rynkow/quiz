@@ -5,7 +5,6 @@ import "./QuestionDisplay.css"
 
 const QuestionDisplay = (props : {question: Question, children?: JSX.Element;}) => {
 
-    console.log(props.question);
     return (
         <Card>
             <Card.Body>
