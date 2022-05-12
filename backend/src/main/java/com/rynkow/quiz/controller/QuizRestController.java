@@ -19,7 +19,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin
 @RequestMapping("/quiz")
 public class QuizRestController {
     private QuizService quizService;
@@ -28,9 +28,7 @@ public class QuizRestController {
 
     @GetMapping("/list")
     public List<QuizDTO> getQuizList(Authentication authentication) {
-        final String userName = authentication == null
-                ? null
-                : authentication.getName();
+        final String userName = (authentication == null) ? null : authentication.getName();
         return quizService.findAll().stream()
                 .map(dtoMapper::mapToDTO)
                 .filter(quizDTO -> quizDTO.getPublic() || Objects.equals(userName, quizDTO.getAuthor()))
@@ -40,12 +38,14 @@ public class QuizRestController {
 
     @GetMapping("/details/{quizId}")
     public QuizDTO getQuizById(@PathVariable String quizId, Authentication authentication) {
+        final String userName = (authentication == null) ? null : authentication.getName();
+
         QuizDTO quiz = quizService.findByID(quizId)
                 .map(dtoMapper::mapToDTO)
-                .map(quizDTO -> dtoMapper.fillUserStatistics(quizDTO, authentication.getName()))
+                .map(quizDTO -> dtoMapper.fillUserStatistics(quizDTO, userName))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "quiz not found"));
 
-        if (!quiz.getPublic() && !Objects.equals(quiz.getAuthor(), authentication.getName()))
+        if (!quiz.getPublic() && !Objects.equals(quiz.getAuthor(), userName))
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "unauthorized");
         return quiz;
     }
