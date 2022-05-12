@@ -1,5 +1,5 @@
 interface Question {
-    id: string,
+    id: string | null,
     question: string,
     answers: Map<string, boolean>,
     isMultipleChoice: boolean,

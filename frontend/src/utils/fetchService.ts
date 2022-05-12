@@ -1,3 +1,4 @@
+import Quiz from "../interface/quiz.interface";
 
 class FetchService {
     private static quizJsonReplacer = (key: any, value: any) => {
@@ -20,7 +21,7 @@ class FetchService {
                 "Authorization": "",
             },
         };
-            requestOptions.headers.Authorization = authHeader;
+        requestOptions.headers.Authorization = authHeader;
 
         const response =  await fetch(`http://localhost:8080/quiz/details/${quizId}`, requestOptions);
         if (!response.ok)
@@ -48,6 +49,36 @@ class FetchService {
         return response.ok;
     }
 
+    public static updateQuiz = async (quiz: Quiz, authHeader: string) => {
+        let requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": authHeader,
+                'credentials': 'same-origin'
+            },
+            body: JSON.stringify(quiz, FetchService.quizJsonReplacer),
+        };
+
+        const response = await fetch(`http://localhost:8080/quiz/update`, requestOptions);
+        return response.ok;
+
+    }
+
+    public static createQuiz = async (quiz: Quiz, authHeader: string) => {
+        let requestOptions = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": authHeader,
+                'credentials': 'same-origin'
+            },
+            body: JSON.stringify(quiz, FetchService.quizJsonReplacer),
+        };
+
+        const response = await fetch(`http://localhost:8080/quiz/create`, requestOptions);
+        return response.ok;
+    }
 
 }
 
