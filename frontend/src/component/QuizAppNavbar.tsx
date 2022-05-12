@@ -5,7 +5,7 @@ import './QuizAppNavbar.css'
 
 const QuizAppNavbar = (props: {loggedIn: boolean, onLogout: ()=>void}) => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand >QuizApp</Navbar.Brand>
