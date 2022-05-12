@@ -1,10 +1,9 @@
 import Quiz from "../interface/quiz.interface";
-import {Card, Button, ProgressBar} from "react-bootstrap";
+import {Card, ProgressBar} from "react-bootstrap";
 import React from "react";
-import {LinkContainer} from "react-router-bootstrap";
 import "./QuizCard.css";
 
-const QuizCard = (props: { quiz:Quiz }) => {
+const QuizCard = (props: { quiz:Quiz, children: JSX.Element}) => {
     let completionRate = props.quiz.questions.filter((question) => !question.needsReview).length / props.quiz.questions.length * 100;
     return (
         <Card
@@ -18,17 +17,7 @@ const QuizCard = (props: { quiz:Quiz }) => {
                 <Card.Text>
                     {props.quiz.description}
                 </Card.Text>
-                <LinkContainer to={`/details/${props.quiz.id}`}>
-                    <Button variant="dark">Details</Button>
-                </LinkContainer>
-                {' '}
-                <LinkContainer to={`/solve/${props.quiz.id}`}>
-                    <Button variant="dark">Solve</Button>
-                </LinkContainer>
-                {' '}
-                <LinkContainer to={`/edit/${props.quiz.id}`}>
-                    <Button variant="dark">Edit</Button>
-                </LinkContainer>
+                {props.children}
             </Card.Body>
             <Card.Footer hidden={completionRate === 0 || props.quiz.questions.length === 0}>
                 <label>Completion Rate{' '}</label>
