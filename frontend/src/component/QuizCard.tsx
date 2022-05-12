@@ -22,8 +22,8 @@ const QuizCard = (props: { quiz:Quiz, children: JSX.Element}) => {
             <Card.Footer hidden={completionRate === 0 || props.quiz.questions.length === 0}>
                 <label>Completion Rate{' '}</label>
                 <ProgressBar>
-                    <ProgressBar variant="success" now={completionRate} key={1} />
-                    <ProgressBar variant="danger" now={100} key={2} />
+                    <ProgressBar variant="success" now={completionRate} key={1} label={`${completionRate}%`}/>
+                    <ProgressBar variant="danger" now={100 - completionRate} key={2}/>
                 </ProgressBar>
             </Card.Footer>
         </Card>
