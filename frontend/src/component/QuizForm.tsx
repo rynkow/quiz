@@ -121,11 +121,11 @@ export function QuizForm(props: { user: User, quiz: Quiz, onSave: (quiz: Quiz) =
                         onChange={(event) => setDescription(event.target.value)}
                     />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className="mb-3" controlId="formQuizPrivate">
                     <Form.Check
                         checked={isPrivate}
                         onChange={(e) => setPrivate(e.target.checked)}
-                        type="switch"
+                        type="checkbox"
                         id="private-switch"
                         label="Private"
                     />

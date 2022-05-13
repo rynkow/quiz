@@ -23,7 +23,7 @@ class FetchService {
         };
         requestOptions.headers.Authorization = authHeader;
 
-        const response =  await fetch(`http://localhost:8080/quiz/details/${quizId}`, requestOptions);
+        const response = await fetch(`http://localhost:8080/quiz/${quizId}`, requestOptions);
         if (!response.ok)
             return undefined;
         const data = await response.json();
@@ -37,20 +37,20 @@ class FetchService {
 
     public static deleteQuiz = async (quizId: string, authHeader: string) =>{
         let requestOptions = {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": authHeader,
             },
         };
 
-        const response = await fetch(`http://localhost:8080/quiz/delete/${quizId}`, requestOptions);
+        const response = await fetch(`http://localhost:8080/quiz/${quizId}`, requestOptions);
         return response.ok;
     }
 
     public static updateQuiz = async (quiz: Quiz, authHeader: string) => {
         let requestOptions = {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": authHeader,
@@ -59,7 +59,7 @@ class FetchService {
             body: JSON.stringify(quiz, FetchService.quizJsonReplacer),
         };
 
-        const response = await fetch(`http://localhost:8080/quiz/update`, requestOptions);
+        const response = await fetch(`http://localhost:8080/quiz`, requestOptions);
         return response.ok;
 
     }
@@ -75,14 +75,14 @@ class FetchService {
             body: JSON.stringify(quiz, FetchService.quizJsonReplacer),
         };
 
-        const response = await fetch(`http://localhost:8080/quiz/create`, requestOptions);
+        const response = await fetch(`http://localhost:8080/quiz`, requestOptions);
         return response.ok;
     }
 
 
     public static updateQuizStats = async (quizId: string, questionId: string, newCorrectAnswers: number, newWrongAnswers: number, needsReview: boolean, authHeader: string) => {
         let requestOptions = {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": authHeader,
@@ -99,7 +99,7 @@ class FetchService {
         }
         urlParams["needsReview"] = needsReview;
 
-        const url = `http://localhost:8080/quiz/${quizId}/${questionId}/updatestats?`;
+        const url = `http://localhost:8080/quiz/${quizId}/${questionId}?`;
 
         console.log(url + new URLSearchParams(urlParams));
 

@@ -15,7 +15,7 @@ export function Signup(props: {onSignup: (user: User)=>void}){
             body: JSON.stringify(user),
         };
 
-        const request = await fetch('http://localhost:8080/user/signup', requestOptions);
+        const request = await fetch('http://localhost:8080/user', requestOptions);
         if (!request.ok){
             setMessage("SignUp unsuccessful");
             return;

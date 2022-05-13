@@ -21,7 +21,7 @@ public class UserRestController {
 
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/login")
+    @GetMapping
     public UserDTO login(Authentication authentication) {
         AuthRole userRole = (AuthRole) authentication.getAuthorities().stream().findFirst().orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.CONFLICT, "User with no authority")
@@ -30,7 +30,7 @@ public class UserRestController {
                 authentication.getName(), null, userRole);
     }
 
-    @PostMapping("/signup")
+    @PostMapping()
     public ResponseEntity<?> signup(@RequestBody UserDTO userDTO) {
         if (userDTO.getName() == null || userDTO.getPassword() == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid user data");

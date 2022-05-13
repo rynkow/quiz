@@ -1,6 +1,5 @@
 import {Button, Container, Stack} from "react-bootstrap";
-import {Key, useEffect, useState} from "react";
-import React from "react";
+import React, {Key, useEffect, useState} from "react";
 import Quiz from "../interface/quiz.interface";
 import QuizCard from "../component/QuizCard";
 import User from "../interface/user.interface";
@@ -20,7 +19,7 @@ export function QuizList(props: {user: User | undefined}){
         };
         if (props.user)
             requestOptions.headers.Authorization =`Basic ${window.btoa(props.user.name + ':' + props.user.password)}`;
-        fetch('http://localhost:8080/quiz/list', requestOptions)
+        fetch('http://localhost:8080/quiz', requestOptions)
             .then(res => res.json())
             .then((data) => {
                 setQuizzes(data);

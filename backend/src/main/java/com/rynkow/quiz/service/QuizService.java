@@ -58,6 +58,7 @@ public class QuizService {
 
     public void saveOrUpdateQuizStatistics(QuizStatistics quizStatistics) {
         quizStatisticsRepository.save(quizStatistics);
+        System.out.println("saved stats");
     }
 
     public Optional<String> getQuizAuthorName(String quizId) {

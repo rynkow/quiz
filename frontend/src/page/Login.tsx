@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Container, Alert} from "react-bootstrap";
+import {Alert, Container} from "react-bootstrap";
 import User from "../interface/user.interface";
 import UserForm from "../component/UserForm";
 import "./Login.css"
@@ -16,7 +16,7 @@ export function Login(props: {onLogin: (user: User) => void}){
             },
         };
 
-       const request = await fetch('http://localhost:8080/user/login', requestOptions);
+        const request = await fetch('http://localhost:8080/user', requestOptions);
        if (!request.ok){
            setMessage("Login unsuccessful");
            return;

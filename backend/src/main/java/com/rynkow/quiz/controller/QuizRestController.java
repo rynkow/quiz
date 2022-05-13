@@ -26,7 +26,7 @@ public class QuizRestController {
     private UserService userService;
     private DtoMapper dtoMapper;
 
-    @GetMapping("/list")
+    @GetMapping
     public List<QuizDTO> getQuizList(Authentication authentication) {
         final String userName = (authentication == null) ? null : authentication.getName();
         return quizService.findAll().stream()
@@ -36,7 +36,7 @@ public class QuizRestController {
                 .toList();
     }
 
-    @GetMapping("/details/{quizId}")
+    @GetMapping("/{quizId}")
     public QuizDTO getQuizById(@PathVariable String quizId, Authentication authentication) {
         final String userName = (authentication == null) ? null : authentication.getName();
 
@@ -60,7 +60,7 @@ public class QuizRestController {
                 .toList();
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<?> createQuiz(@RequestBody QuizDTO quizDTO, Authentication authentication) {
         if (!Objects.equals(quizDTO.getAuthor(), authentication.getName()))
             throw new ResponseStatusException(HttpStatus.CONFLICT);
@@ -70,7 +70,7 @@ public class QuizRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/update")
+    @PatchMapping("/update")
     public ResponseEntity<?> UpdateQuiz(@RequestBody QuizDTO quizDTO, Authentication authentication) {
         if (!Objects.equals(quizDTO.getAuthor(), authentication.getName()))
             throw new ResponseStatusException(HttpStatus.CONFLICT);
@@ -81,7 +81,7 @@ public class QuizRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteQuiz(@PathVariable String id, Authentication authentication) {
         String authorName = quizService.getQuizAuthorName(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (!Objects.equals(authorName, authentication.getName()))
@@ -90,7 +90,7 @@ public class QuizRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/{quizId}/{questionId}/updatestats")
+    @PatchMapping("/{quizId}/{questionId}")
     public ResponseEntity<?> updateQuizStatistics(
             @PathVariable String quizId,
             @PathVariable String questionId,
@@ -99,6 +99,7 @@ public class QuizRestController {
             @RequestParam(required = false) Boolean needsReview,
             Authentication authentication
     ) {
+        System.out.println("updating");
         String userId = userService.getId(authentication.getName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         QuizStatistics quizStatistics = quizService.findQuizStatistics(userId, quizId).orElse(new QuizStatistics(userId, quizId, new HashMap<>()));
         QuestionStatistics questionStatistics = Optional.ofNullable(quizStatistics.getQuestionsStatistics().get(questionId)).orElse(new QuestionStatistics());
