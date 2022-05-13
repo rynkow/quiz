@@ -70,7 +70,7 @@ public class QuizRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PatchMapping("/update")
+    @PatchMapping
     public ResponseEntity<?> UpdateQuiz(@RequestBody QuizDTO quizDTO, Authentication authentication) {
         if (!Objects.equals(quizDTO.getAuthor(), authentication.getName()))
             throw new ResponseStatusException(HttpStatus.CONFLICT);
