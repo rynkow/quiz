@@ -25,7 +25,7 @@ Java Spring Boot <br>
 rest api server - [Endpoinds Documentation](/backend/ENDPOINTS.md)
 
 ### Frontend
-React.js (in typescript) <br>
+React.js (in typescript), React Router and React Bootstrap <br>
 
 ## Features
 ### Authentication
