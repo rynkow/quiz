@@ -31,14 +31,14 @@ export function QuizList(props: {user: User | undefined}){
             return
 
         let requestOptions = {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Basic ${window.btoa(props.user.name + ':' + props.user.password)}`,
             },
         };
 
-        fetch(`http://localhost:8080/quiz/delete/${id}`, requestOptions)
+        fetch(`http://localhost:8080/quiz/${id}`, requestOptions)
             .then(
                 res => {
                     console.log(`${id} deletion status`, res.status);
