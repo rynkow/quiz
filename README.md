@@ -1,11 +1,11 @@
 # QuizzApp
-Web app that allows users to create, store, acces and solve quizzes (quizzes consist of arbitrary ammount of multiple-choice questions). Logged users sore their anser statistics on the server and can tag questions as memorized/nedds-to-review.
+Web app that allows users to create, store, access and solve quizzes (quizzes consist of arbitrary amount of multiple-choice questions). Logged users sore their anser statistics on the server and can tag questions as memorized/needs-to-review.
 
 ## Technology Stack
 
 ### Data Base
 Mongo.db and Spring Data <br>
-[detailed collecion descriptions](quiz/backend/COLLECTIONS.md)
+[Detailed collection descriptions](quiz/backend/COLLECTIONS.md)
 
 #### Collections 
 
@@ -18,7 +18,7 @@ stores quiz data. <br>
 
 #### `quizstatistics`
 stores quiz statistics for a single quiz. <br> 
-(tag, numbber of correct and wrong answers for every question in the quiz)
+(tag, number of correct and wrong answers for every question in the quiz)
 
 ### Server
 Java Spring Boot <br>
@@ -30,10 +30,10 @@ React.js (in typescript) <br>
 ## Features
 ### Authentication
 Users can create accounts by providing unique username and password. <br>
-App uses Basic Htttp Authorizaton and stateless sessions - authorization data has to be sent in every authorized request.
+App uses Basic Htttp Authorization  and stateless sessions - authorization data has to be sent in every authorized request.
 <br> Users without accounts can:
  * browse public quizzes
- * solve public quizzes - statisctis will still be gathered and displayed, but not presisted.
+ * solve public quizzes - statistics will still be gathered and displayed, but not presisted.
  * login/signup
 
 ![image](readmeResources/quiz_login.gif)
