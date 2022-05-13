@@ -5,7 +5,7 @@ Web app that allows users to create, store, access and solve quizzes (quizzes co
 
 ### Data Base
 Mongo.db and Spring Data <br>
-[Detailed collection descriptions](quiz/backend/COLLECTIONS.md)
+[Detailed collection descriptions](/backend/COLLECTIONS.md)
 
 #### Collections 
 
@@ -22,7 +22,7 @@ stores quiz statistics for a single quiz. <br>
 
 ### Server
 Java Spring Boot <br>
-rest api server - [Endpoinds Documentation](quiz/backend/ENDPOINTS.md)
+rest api server - [Endpoinds Documentation](/backend/ENDPOINTS.md)
 
 ### Frontend
 React.js (in typescript) <br>
