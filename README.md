@@ -1,5 +1,5 @@
 # QuizzApp
-Web app that allows users to create, store, access and solve quizzes (quizzes consist of arbitrary amount of multiple-choice questions). Logged users sore their anser statistics on the server and can tag questions as memorized/needs-to-review.
+Web app that allows users to create, store, access and solve quizzes (quizzes consist of an arbitrary amount of multiple-choice questions). Logged users store their answer statistics on the server and can tag questions as memorized/needs-to-review.
 
 ## Technology Stack
 
@@ -30,7 +30,7 @@ React.js (in typescript), React Router and React Bootstrap <br>
 ## Features
 ### Authentication
 Users can create accounts by providing unique username and password. <br>
-App uses Basic Htttp Authorization  and stateless sessions - authorization data has to be sent in every authorized request.
+App uses Basic Htttp Authorization and stateless sessions - authorization data has to be sent in every authorized request.
 <br> Users without accounts can:
  * browse public quizzes
  * solve public quizzes - statistics will still be gathered and displayed, but not presisted.
